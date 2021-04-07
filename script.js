@@ -59,25 +59,25 @@ function prepRequirements(inputs) {
         liMass.innerHTML = 'Cargo mass low enough for launch.';
         if (inputs.every((item) => item.value !== "")) {
         }
-        else {
+        else if {
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
         }
-        if (typeof inputs[0].value !== "string" || typeof inputs[1].value !== "string") {
+        else if (typeof inputs[0].value !== "string" || typeof inputs[1].value !== "string") {
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
         }
-        if (isNaN(Number(inputs[2].value)) || isNaN(Number(inputs[3].value))) {
+        else if (isNaN(Number(inputs[2].value)) || isNaN(Number(inputs[3].value))) {
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
         }
-        if (Number(inputs[2].value) < 10000) {
+        else if (Number(inputs[2].value) < 10000) {
             display.style.visibility = 'visible';
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
             liFuel.innerHTML = 'Fuel level too low for launch!';
         }
-        if (Number(inputs[3].value) > 10000) {
+        else if (Number(inputs[3].value) > 10000) {
             display.style.visibility = 'visible';
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
@@ -88,6 +88,8 @@ function prepRequirements(inputs) {
         console.log('document elements not found!');
     }
 }
+
+
 function onSubmit() {
     const submit = document.getElementById('formSubmit');
     const inputs = Array.from(document.getElementsByTagName('input'));
