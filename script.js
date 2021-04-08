@@ -49,46 +49,58 @@ function prepRequirements(inputs) {
     const liCoPilot = document.getElementById('copilotStatus');
     const liFuel = document.getElementById('fuelStatus');
     const liMass = document.getElementById('cargoStatus');
-    if (display && h2Status && liPilot && liCoPilot && liFuel && liMass) {
-        h2Status.innerHTML = 'Shuttle is ready for launch.';
-        h2Status.style.color = 'green';
-        display.style.visibility = 'hidden';
-        liPilot.innerHTML = `Pilot ${inputs[0].value} is ready for launch.`;
-        liCoPilot.innerHTML = `Co-pilot ${inputs[1].value} is ready for launch.`;
-        liFuel.innerHTML = 'Fuel level high enough for launch.';
-        liMass.innerHTML = 'Cargo mass low enough for launch.';
-        if (inputs.every((item) => item.value !== "")) {
-        }
-        else if {
-            h2Status.innerHTML = 'Shuttle not ready for launch!';
-            h2Status.style.color = 'red';
-        }
-        else if (typeof inputs[0].value !== "string" || typeof inputs[1].value !== "string") {
-            h2Status.innerHTML = 'Shuttle not ready for launch!';
-            h2Status.style.color = 'red';
-        }
-        else if (isNaN(Number(inputs[2].value)) || isNaN(Number(inputs[3].value))) {
-            h2Status.innerHTML = 'Shuttle not ready for launch!';
-            h2Status.style.color = 'red';
-        }
-        else if (Number(inputs[2].value) < 10000) {
+
+    // if (display && h2Status && liPilot && liCoPilot && liFuel && liMass) {
+        // h2Status.innerHTML = 'Shuttle is ready for launch.';
+        // h2Status.style.color = 'green';
+        // display.style.visibility = 'hidden';
+        // liPilot.innerHTML = `Pilot ${inputs[0].value} is ready for launch.`;
+        // liCoPilot.innerHTML = `Co-pilot ${inputs[1].value} is ready for launch.`;
+        // liFuel.innerHTML = 'Fuel level high enough for launch.';
+        // liMass.innerHTML = 'Cargo mass low enough for launch.';
+        
+        // if (inputs.every((item) => item.value !== "")) {
+        // } else {
+        //     h2Status.innerHTML = 'Shuttle not ready for launch!';
+        //     h2Status.style.color = 'red';
+        // }
+
+        // if (typeof inputs[0].value !== "string" || typeof inputs[1].value !== "string") {
+        //     h2Status.innerHTML = 'Shuttle not ready for launch!';
+        //     h2Status.style.color = 'red';
+        // }
+        // if (isNaN(Number(inputs[2].value)) || isNaN(Number(inputs[3].value))) {
+        //     h2Status.innerHTML = 'Shuttle not ready for launch!';
+        //     h2Status.style.color = 'red';
+        // }
+    if (Number(inputs[2].value) < 10000 && Number(inputs[3].value) > 10000) {
             display.style.visibility = 'visible';
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
-            liFuel.innerHTML = 'Fuel level too low for launch!';
-        }
-        else if (Number(inputs[3].value) > 10000) {
+            liFuel.innerHTML = 'Fuel level too low for launch';
+            liMass.innerHTML = 'Cargo mass too high for launch'
+        } else if (Number(inputs[2].value) >= 10000 && Number(inputs[3].value) > 10000) {
             display.style.visibility = 'visible';
             h2Status.innerHTML = 'Shuttle not ready for launch!';
             h2Status.style.color = 'red';
             liMass.innerHTML = 'Shuttle mass too heavy for launch!';
-        }
-    }
-    else {
-        console.log('document elements not found!');
-    }
+            liFuel.innerHTML = 'Fuel level high enough for launch.';
+        } else if (Number(inputs[2].value) < 10000 && Number(inputs[3].value) <= 10000) {
+            display.style.visibility = 'visible';
+            h2Status.innerHTML = 'Shuttle not ready for launch!';
+            h2Status.style.color = 'red';
+            liFuel.innerHTML = 'Fuel level too low for launch';
+            liMass.innerHTML = 'Cargo mass low enough for launch.';
+    } else {
+                h2Status.innerHTML = 'Shuttle is ready for launch.';
+        h2Status.style.color = 'green';
+        display.style.visibility = 'visible';
+        liPilot.innerHTML = `Pilot ${inputs[0].value} is ready for launch.`;
+        liCoPilot.innerHTML = `Co-pilot ${inputs[1].value} is ready for launch.`;
+        liFuel.innerHTML = 'Fuel level high enough for launch.';
+        liMass.innerHTML = 'Cargo mass low enough for launch.';
+            }
 }
-
 
 function onSubmit() {
     const submit = document.getElementById('formSubmit');
